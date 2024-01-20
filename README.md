@@ -12,24 +12,10 @@ yarn run start:dev
 
 it will start the development server on the port specified in env
 
-## Start Listening To Stripe Webhooks (Only Run for Local Development)
-
-First Run This Command to login to Stripe CLI. Open the link in the browser and login to your stripe account.
-
-```
-stripe login
-```
-
-Then Run This Command to start listening to webhooks
-
-```
-stripe listen --forward-to http://localhost:9090/payment/webhooks
-```
-
 ## Build For Production
 
 ```
-yarn build
+yarn run build
 ``` 
 
 ## Start The Production Server

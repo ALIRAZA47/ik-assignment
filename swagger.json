@@ -107,7 +107,8 @@
         "tags": [
           "Scrapping"
         ],
-        "description": "API to scrap data from a using URL.",
+        "summary": "Get Contents of a URL using Puppeteer.",
+        "description": "Note: Request to the URLs provided will get timed out after 30 seconds.",
         "responses": {
           "default": {
             "description": ""

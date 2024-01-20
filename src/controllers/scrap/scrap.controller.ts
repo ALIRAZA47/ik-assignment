@@ -15,18 +15,19 @@ scrapRouter.post(
     validateRequestBody(ScrapUsingUrlsValidator),
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['Scrapping']
-    //  #swagger.description = 'API to scrap data from a using URL.'
+    //  #swagger.description = 'Note: Request to the URLs provided will get timed out after 30 seconds.'
+    // #swagger.summary = 'Get Contents of a URL using Puppeteer.'
     /*  #swagger.requestBody = {
-                     required: true,
-                        content: {
-                            'application/json': {
-                                schema: {
-                                    $ref: '#/definitions/URLToContentsModel',
+                         required: true,
+                            content: {
+                                'application/json': {
+                                    schema: {
+                                        $ref: '#/definitions/URLToContentsModel',
+                                    },
                                 },
                             },
-                        },
-                   }
-               */
+                       }
+                   */
         return globalResponseHandler(
             req,
             res,
