@@ -1,9 +1,13 @@
 import swaggerAutogen from 'swagger-autogen'
 import { config } from 'dotenv'
+import j2s from 'joi-to-swagger'
+import { ScrapUsingUrlsValidator } from './validators/scrap.using.urls.validator'
 
 config()
 
-const _swaggerAutogen = swaggerAutogen()
+export const SwaggerDefinitionsFromJoi = (joiSchema: any) => {
+    return j2s(joiSchema).swagger
+}
 export const swaggerConfigDoc = {
     swagger: '1.0',
     info: {
@@ -21,6 +25,9 @@ export const swaggerConfigDoc = {
                 scheme: 'bearer',
             },
         },
+    },
+    '@definitions': {
+        URLToContentsModel: SwaggerDefinitionsFromJoi(ScrapUsingUrlsValidator),
     },
 }
 

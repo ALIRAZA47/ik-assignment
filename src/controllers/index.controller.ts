@@ -15,13 +15,13 @@ rootRouter.get(
     '/',
     asyncHandler(async (req, res) => {
     /*
-                                    #swagger.tags = ['App']
-                                #swagger.description = 'App Home.'
-                        
-                                    #swagger.responses[200] = {
-                                        data: 'App Home.',
-                                    }
-                                    */
+                                        #swagger.tags = ['App']
+                                    #swagger.description = 'App Home.'
+                            
+                                        #swagger.responses[200] = {
+                                            data: 'App Home.',
+                                        }
+                                        */
         return globalResponseHandler(
             req,
             res,
@@ -34,6 +34,6 @@ rootRouter.get(
 
 rootRouter.use(ActuatorHealth)
 rootRouter.use('/users', userRouter)
-rootRouter.use('/scrap', scrapRouter)
+rootRouter.use('/scrapping', scrapRouter)
 
 export default rootRouter

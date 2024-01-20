@@ -11,8 +11,13 @@ export function notFound(req, res) {
 /* eslint-disable no-unused-vars */
 export function errorHandler(err, req, res, next) {
     if (process.env.APP_ENV !== 'test') {
-    // eslint-disable-next-line no-console
-        Logger.error(`Exception handled with error message: '${err.message}'`)
+        let msg = err.message
+        try {
+            msg = JSON.stringify(err.message)
+        } catch (e) {
+            //
+        }
+        Logger.error(`Exception handled with error message: '${msg}'`)
     }
     const statusCode = err.statusCode
         ? err.statusCode

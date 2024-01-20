@@ -2,8 +2,9 @@ import HttpException from '../utils/global/httpException'
 import { isEmpty } from '../utils/object.methods'
 import joiValidateOptions from '../common/constants/validations/joi'
 import { BAD_REQUEST } from 'http-status'
+import Joi from 'joi'
 
-const validateRequestBody = (schema) => {
+const validateRequestBody = <T>(schema: Joi.ObjectSchema<T>) => {
     return (req, res, next) => {
         if (isEmpty(req.body)) {
             throw new HttpException(BAD_REQUEST, `Cannot ${req.method} empty body`)

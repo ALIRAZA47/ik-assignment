@@ -3,7 +3,7 @@ export class ScrappingService {
     // do nothing
     }
 
-    async scrap() {
+    async scrap(urls: string[]) {
         return 'Hello World'
     }
 }

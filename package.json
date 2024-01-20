@@ -36,6 +36,7 @@
     "firebase-admin": "^11.5.0",
     "http-status": "^1.6.2",
     "joi": "^17.6.0",
+    "joi-to-swagger": "^6.2.0",
     "moment": "^2.29.4",
     "mongoose": "^6.6.5",
     "morgan": "^1.10.0",
