@@ -11,6 +11,7 @@ import api from './controllers/index.controller'
 import { errorHandler, notFound } from './middlewares/exception.handler.mw'
 import authenticationMiddleware from './middlewares/authentication.mw'
 import swaggerUI from 'swagger-ui-express'
+import { useTreblle } from 'treblle'
 
 const app = express()
 // Setup Mongo
@@ -19,7 +20,10 @@ mongoose.connection.once('open', () => {
     // All OK - fire (emit) a ready event.
     app.emit('ready')
 })
-
+useTreblle(app, {
+    apiKey: process.env.TREBLLE_API_KEY,
+    projectId: process.env.TREBLLE_PROJECT_ID,
+})
 // setup morgan for req logging
 app.use(morgan('common'))
 app.use(cors())
