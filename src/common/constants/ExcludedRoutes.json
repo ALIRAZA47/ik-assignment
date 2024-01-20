@@ -1,0 +1,19 @@
+{
+  "authMiddleware": {
+    "GET": [
+      "/api",
+      "/api/mgmt/info",
+      "/api/mgmt/metrics",
+      "/api/mgmt/health",
+      "/api/mgmt/ready"
+    ],
+    "POST": [
+      "/api/users"
+    ],
+    "PATCH": [
+    ],
+    "PUT": [
+      "/api/users"
+    ]
+  }
+}
