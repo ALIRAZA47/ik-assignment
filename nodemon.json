@@ -15,5 +15,5 @@
     "ts": "ts-node"
   },
   "ext": "ts",
-  "exec": "ts-node ./src/app.ts"
+  "exec": "ts-node ./src/bootstrap.ts"
 }

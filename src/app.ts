@@ -11,7 +11,6 @@ import api from './controllers/index.controller'
 import { errorHandler, notFound } from './middlewares/exception.handler.mw'
 import authenticationMiddleware from './middlewares/authentication.mw'
 import swaggerUI from 'swagger-ui-express'
-import { exec } from 'child_process'
 
 const app = express()
 // Setup Mongo
@@ -45,14 +44,6 @@ app.set('host', process.env.APP_HOST)
 // Start the server
 
 app.listen(port, () => {
-    // eslint-disable-next-line no-console
-    exec('npm run swagger:gen', (err, stdout, stderr) => {
-        if (err) {
-            console.log('Failed to generate swagger docs')
-        } else {
-            console.log('Swagger docs generated')
-        }
-    })
     console.log(
         `Server Listening @: ${process.env.PROTOCOL}://${process.env.HOST}:${port}`,
     )

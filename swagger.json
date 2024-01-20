@@ -27,6 +27,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -35,6 +38,9 @@
         }
       },
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -45,6 +51,9 @@
     },
     "/users/is-username-taken": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -55,6 +64,9 @@
     },
     "/users/logged-in": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -65,6 +77,9 @@
     },
     "/users/login": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -75,10 +90,27 @@
     },
     "/users/verify-email": {
       "patch": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/scrap/": {
+      "post": {
+        "tags": [
+          "Scrapping"
+        ],
+        "description": "APIs for scrapping.",
+        "responses": {
+          "200": {
+            "data": "App Home.",
+            "description": "OK"
           }
         }
       }

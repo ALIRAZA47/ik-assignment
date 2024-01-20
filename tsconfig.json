@@ -35,6 +35,9 @@
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/swagger.ts",
+    "README.md",
+    "package.json"
   ]
 }

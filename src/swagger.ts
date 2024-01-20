@@ -1,10 +1,10 @@
-const swaggerAutogen = require('swagger-autogen')
-const { config } = require('dotenv')
+import swaggerAutogen from 'swagger-autogen'
+import { config } from 'dotenv'
 
 config()
 
 const _swaggerAutogen = swaggerAutogen()
-const doc = {
+export const swaggerConfigDoc = {
     swagger: '1.0',
     info: {
         version: '1.0.0',
@@ -24,7 +24,7 @@ const doc = {
     },
 }
 
-const outputFile = './swagger.json'
+const outputFile = '../swagger.json'
 const endpointsFiles = ['src/controllers/index.controller.ts']
 
-_swaggerAutogen(outputFile, endpointsFiles, doc)
+// _swaggerAutogen(outputFile, endpointsFiles, swaggerConfigDoc)

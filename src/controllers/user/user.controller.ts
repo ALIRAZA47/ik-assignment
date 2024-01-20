@@ -14,11 +14,12 @@ import { NO_CONTENT, OK } from 'http-status'
 // vars
 const userRouter = express.Router()
 const userService = new UserService()
-
 // routes
 userRouter.get(
     '/',
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
+
         return globalResponseHandler(
             req,
             res,
@@ -33,6 +34,7 @@ userRouter.post(
     '/is-username-taken',
     validateRequestBody(UsernamesValidation),
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
         return globalResponseHandler(
             req,
             res,
@@ -45,6 +47,7 @@ userRouter.post(
 userRouter.get(
     '/logged-in',
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
         return globalResponseHandler(
             req,
             res,
@@ -58,6 +61,7 @@ userRouter.post(
     '/',
     validateRequestBody(SignUpUserValidation),
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
         return globalResponseHandler(
             req,
             res,
@@ -72,6 +76,7 @@ userRouter.post(
     '/login',
     validateRequestBody(LoginValidation),
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
         return globalResponseHandler(
             req,
             res,
@@ -85,6 +90,7 @@ userRouter.patch(
     '/verify-email',
     validateRequestBody(VerifyEmailValidation),
     asyncHandler(async (req, res) => {
+    // #swagger.tags = ['User']
         return globalResponseHandler(
             req,
             res,
