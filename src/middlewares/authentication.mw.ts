@@ -13,7 +13,6 @@ const authenticationMiddleware = async (
 ) => {
     const excludedRoutes: string[] = authMiddleware[req.method]
     const reqUrl = req.originalUrl
-    console.log('reqUrl', reqUrl, 'excludedRoutes', excludedRoutes)
     if (
         excludedRoutes &&
     excludedRoutes.length &&

@@ -139,6 +139,32 @@
           }
         }
       }
+    },
+    "/problem-3-fs/read-files": {
+      "get": {
+        "tags": [
+          "Problem 3 (File System)"
+        ],
+        "summary": "Read files from the directory with extension provided in the query params",
+        "description": "",
+        "parameters": [
+          {
+            "name": "extension",
+            "in": "query",
+            "description": "Extension of the file to read",
+            "required": true,
+            "example": ".txt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {

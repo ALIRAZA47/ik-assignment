@@ -7,7 +7,9 @@
       "/api/mgmt/health",
       "/api/mgmt/ready",
       "/api/problem-2-api/call-api",
-      "/api/problem-2-api/call-api/"
+      "/api/problem-2-api/call-api/",
+      "/api/problem-3-fs/read-files",
+      "/api/problem-3-fs/read-files/"
     ],
     "POST": [
       "/api/users",
