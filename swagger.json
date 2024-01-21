@@ -351,6 +351,5 @@
         "additionalProperties": false
       }
     }
-  },
-  "defaultSchema": "https"
+  }
 }

@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     // redirect to swagger docs
     res.redirect('/api-docs')
 })
+app.get('', (req, res) => {
+    // redirect to swagger docs
+    res.redirect('/api-docs')
+})
 app.use(
     '/api-docs',
     swaggerUI.serve,
