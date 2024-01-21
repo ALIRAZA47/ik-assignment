@@ -43,7 +43,7 @@ app.use('/api/', api)
 app.use(notFound)
 app.use(errorHandler)
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 // set vars
 app.set('port', port)
 app.set('env', process.env.APP_ENV)
@@ -53,7 +53,7 @@ app.set('host', process.env.APP_HOST)
 
 app.listen(port, () => {
     console.log(
-        `Server Listening @: ${process.env.PROTOCOL}://${process.env.HOST}:${port}`,
+        `Server Listening @: ${process.env.PROTOCOL}://${process.env.HOST}`,
     )
 })
 

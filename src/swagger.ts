@@ -17,7 +17,7 @@ export const swaggerConfigDoc = {
         title: 'REST API',
         description: '',
     },
-    host: `${process.env.HOST}:${process.env.PORT}`,
+    host: `${process.env.HOST}`,
     basePath: '/api',
     schemes: ['https', 'http'],
     components: {
