@@ -19,7 +19,7 @@ export const swaggerConfigDoc = {
     },
     host: `${process.env.HOST}:${process.env.PORT}`,
     basePath: '/api',
-    schemes: ['http'],
+    schemes: ['http', 'https'],
     components: {
         securitySchemes: {
             bearerAuth: {
