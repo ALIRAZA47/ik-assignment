@@ -132,7 +132,7 @@
           "Problem 2 (API Call)"
         ],
         "summary": "Call an API and return the response (API Call). Handle the error if the API call fails.",
-        "description": "",
+        "description": "I will be using the API https://jsonplaceholder.typicode.com/todos/1000 to get the todo. If the API call fails, I will handle the error and return the error message and the status code.",
         "responses": {
           "default": {
             "description": ""

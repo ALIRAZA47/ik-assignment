@@ -11,14 +11,14 @@ const authenticationMiddleware = async (
     res: Response,
     next: NextFunction,
 ) => {
-    const excludedRoutes = authMiddleware[req.method]
+    const excludedRoutes: string[] = authMiddleware[req.method]
     const reqUrl = req.originalUrl
+    console.log('reqUrl', reqUrl, 'excludedRoutes', excludedRoutes)
     if (
         excludedRoutes &&
     excludedRoutes.length &&
     (excludedRoutes.includes(reqUrl) ||
-      excludedRoutes.includes(reqUrl.split('?')[0]) ||
-      reqUrl.replace(/\/$/, ''))
+      excludedRoutes.includes(reqUrl.split('?')[0]))
     ) {
         return next()
     } else {

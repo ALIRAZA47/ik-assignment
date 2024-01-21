@@ -6,15 +6,17 @@
       "/api/mgmt/metrics",
       "/api/mgmt/health",
       "/api/mgmt/ready",
-      "/api/problem-2-api/call-api"
+      "/api/problem-2-api/call-api",
+      "/api/problem-2-api/call-api/"
     ],
     "POST": [
-      "/api/users"
+      "/api/users",
+      "/api/problem-1-scrapping/scrap",
+      "/api/problem-1-scrapping/scrap/"
     ],
     "PATCH": [
     ],
     "PUT": [
-      "/api/users"
     ]
   }
 }

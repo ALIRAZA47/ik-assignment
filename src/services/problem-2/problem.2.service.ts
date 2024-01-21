@@ -28,7 +28,7 @@ export class Problem2Service {
             // if the API call fails, throw an error with the status code and the error message
             throw new HttpException(
                 e?.response?.status || HttpStatusCode.BadGateway,
-                e?.response?.data?.error?.message || 'Error while logging in user',
+                e?.response?.statusMessage || e?.statusMessage || 'Failed to get todo',
             )
         }
     }

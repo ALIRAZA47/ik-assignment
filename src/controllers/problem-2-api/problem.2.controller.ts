@@ -16,6 +16,7 @@ problem2Api.get(
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['Problem 2 (API Call)']
     // #swagger.summary = 'Call an API and return the response (API Call). Handle the error if the API call fails.'
+    // #swagger.description = 'I will be using the API https://jsonplaceholder.typicode.com/todos/1000 to get the todo. If the API call fails, I will handle the error and return the error message and the status code.'
         return globalResponseHandler(
             req,
             res,
