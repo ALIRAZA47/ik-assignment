@@ -3,8 +3,7 @@ import { NextFunction, Request, Response } from 'express'
 import { FORBIDDEN } from '../common/constants/statusCodes'
 
 import { authMiddleware } from '../common/constants/ExcludedRoutes.json'
-import { auth } from 'firebase-admin'
-import UserModel from '../models/user.model'
+import { JwtService } from '../services/jwt.service'
 
 const authenticationMiddleware = async (
     req: Request,
@@ -22,19 +21,14 @@ const authenticationMiddleware = async (
         return next()
     } else {
         try {
+            console.log('req.header', req.header('Authorization'))
             const token = req.header('Authorization')?.replace('Bearer ', '')
             if (!token)
-                return next(
-                    new HttpException(FORBIDDEN, 'Token is not present in the Header!'),
-                )
-            const decodedToken = await auth().verifyIdToken(token)
+                return next(new HttpException(FORBIDDEN, 'Auth token is required!'))
+            const jwtService = new JwtService()
+            const decodedToken = jwtService.verify(token)
             if (decodedToken) {
-                const fUser = await auth().getUser(decodedToken.uid)
-                const user = await UserModel.findOne({
-                    fuid: decodedToken.uid,
-                })
-                req['firebaseUser'] = fUser
-                req['user'] = user
+                req['user'] = decodedToken
                 next()
             } else {
                 return next(new HttpException(FORBIDDEN, 'Invalid access/id token'))

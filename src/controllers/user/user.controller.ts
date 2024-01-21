@@ -3,102 +3,81 @@ import globalResponseHandler from '../../utils/global/response.handler'
 import asyncHandler from '../../utils/router.methods'
 import { UserService } from '../../services/user/user.service'
 import validateRequestBody from '../../middlewares/validate.request.body.mw'
-import {
-    SignUpUserValidation,
-    UsernamesValidation,
-    VerifyEmailValidation,
-} from './validations/create.user.validation'
-import { LoginValidation } from './validations/login.validation'
-import { NO_CONTENT, OK } from 'http-status'
+import { SignupUserJoiSchema } from '../../dtos/users/create.user.dto'
+import { OK } from 'http-status'
+import { Types } from '../../types/types'
+import { LoginUserJoiSchema } from '../../dtos/users/login.user.dto'
+import { HttpStatusCode } from 'axios'
 
 // vars
 const userRouter = express.Router()
 const userService = new UserService()
 // routes
 userRouter.get(
-    '/',
+    '/me',
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['User']
-
+    // #swagger.security = [{ "bearerAuth": [] }]s
+    // #swagger.summary = 'Get current user details. Returns user details if token is valid in Authorization header.'
         return globalResponseHandler(
             req,
             res,
-            OK,
-            'Users List',
-            await userService.getAllUsers(),
-        )
-    }),
-)
-
-userRouter.post(
-    '/is-username-taken',
-    validateRequestBody(UsernamesValidation),
-    asyncHandler(async (req, res) => {
-    // #swagger.tags = ['User']
-        return globalResponseHandler(
-            req,
-            res,
-            OK,
-            'Username availability',
-            await userService.isUsernameTaken(req),
-        )
-    }),
-)
-userRouter.get(
-    '/logged-in',
-    asyncHandler(async (req, res) => {
-    // #swagger.tags = ['User']
-        return globalResponseHandler(
-            req,
-            res,
-            OK,
-            'Logged In User',
-            await userService.getLoggedInUser(req),
+            HttpStatusCode.Ok,
+            'User',
+            await userService.getCurrentUserDetails(req),
         )
     }),
 )
 userRouter.post(
-    '/',
-    validateRequestBody(SignUpUserValidation),
+    '/signup',
+    validateRequestBody(SignupUserJoiSchema),
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['User']
+    /* #swagger.requestBody = {
+                                                                                required: true,
+                                                                                content: {
+                                                                                     "application/json": {
+                                                                                          schema: {
+                                                                                            $ref: "#/definitions/SignupUserModel"
+                                                                                          }
+                                                                                     }
+                                                                                }
+                                                                              }
+                                                                         */
         return globalResponseHandler(
             req,
             res,
-            OK,
+            HttpStatusCode.Created,
             'User Created',
-            await userService.createUser(req),
+            await userService.createUser(req.body as Types.User.SignupDto),
         )
     }),
 )
 
 userRouter.post(
     '/login',
-    validateRequestBody(LoginValidation),
+    validateRequestBody(LoginUserJoiSchema),
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['User']
+    /* #swagger.requestBody = {
+                                                                        required: true,
+                                                                        content: {
+                                                                             "application/json": {
+                                                                                  schema: {
+                                                                                    $ref: "#/definitions/LoginUserModel"
+                                                                                  }
+                                                                             }
+                                                                        }
+                                                                      }
+                                                                 */
         return globalResponseHandler(
             req,
             res,
             OK,
             'User Token',
-            await userService.login(req),
-        )
-    }),
-)
-userRouter.patch(
-    '/verify-email',
-    validateRequestBody(VerifyEmailValidation),
-    asyncHandler(async (req, res) => {
-    // #swagger.tags = ['User']
-        return globalResponseHandler(
-            req,
-            res,
-            NO_CONTENT,
-            'Verify Email',
-            await userService.verifyEmail(req),
+            await userService.login(req.body as Types.User.LoginDto),
         )
     }),
 )
 
-export default userRouter
+export { userRouter }

@@ -1,16 +1,9 @@
 import { model, Schema } from 'mongoose'
 import BaseSchema from './base.model'
-import { UserStatusEnum } from '../common/enums/user/user.status.enum'
 import { Types } from '../types/types'
+import bcrypt from 'bcrypt'
 
 export const UserSchema = new Schema<Types.User.IUser>({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        minlength: 3,
-    },
     email: {
         type: String,
         required: true,
@@ -19,7 +12,21 @@ export const UserSchema = new Schema<Types.User.IUser>({
     name: {
         type: String,
     },
-}).add(BaseSchema)
+    password: {
+        type: String,
+        required: true,
+    },
+})
+    .add(BaseSchema)
+    .pre('save', async function (next) {
+        if (!this.isModified('password')) return next()
+        const hashedPassword = await bcrypt.hash(this.password, 10)
+        this.password = hashedPassword
+        next()
+    })
+    .method('comparePassword', async function (password: string) {
+        return await bcrypt.compare(password, this.password)
+    })
 
 const UserModel = model('users', UserSchema)
 

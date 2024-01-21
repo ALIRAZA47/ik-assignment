@@ -5,16 +5,12 @@
       "/api/mgmt/info",
       "/api/mgmt/metrics",
       "/api/mgmt/health",
-      "/api/mgmt/ready",
-      "/api/problem-2-api/call-api",
-      "/api/problem-2-api/call-api/",
-      "/api/problem-3-fs/read-files",
-      "/api/problem-3-fs/read-files/"
+      "/api/mgmt/ready"
     ],
     "POST": [
       "/api/users",
-      "/api/problem-1-scrapping/scrap",
-      "/api/problem-1-scrapping/scrap/"
+      "/api/users/signup",
+      "/api/users/login"
     ],
     "PATCH": [
     ],

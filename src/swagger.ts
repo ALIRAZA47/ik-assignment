@@ -3,6 +3,8 @@ import { config } from 'dotenv'
 import j2s from 'joi-to-swagger'
 import { ScrapUsingUrlsDto } from './dtos/scrap.using.urls.dto'
 import { CreatePostJoiSchema } from './dtos/posts/create.post.dto'
+import { SignupUserJoiSchema } from './dtos/users/create.user.dto'
+import { LoginUserJoiSchema } from './dtos/users/login.user.dto'
 
 config()
 
@@ -30,6 +32,8 @@ export const swaggerConfigDoc = {
     '@definitions': {
         URLToContentsModel: SwaggerDefinitionsFromJoi(ScrapUsingUrlsDto),
         CreatePostModel: SwaggerDefinitionsFromJoi(CreatePostJoiSchema),
+        SignupUserModel: SwaggerDefinitionsFromJoi(SignupUserJoiSchema),
+        LoginUserModel: SwaggerDefinitionsFromJoi(LoginUserJoiSchema),
     },
 }
 
