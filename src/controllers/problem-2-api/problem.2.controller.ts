@@ -16,14 +16,6 @@ problem2Api.get(
     asyncHandler(async (req, res) => {
     // #swagger.tags = ['Problem 2 (API Call)']
     // #swagger.summary = 'Call an API and return the response (API Call). Handle the error if the API call fails.'
-    /*  #swagger.requestBody = {
-                                                     required: true,
-                                                        content: {
-                                                            'application/json': {
-                                                            },
-                                                        },
-                                                   }
-                                               */
         return globalResponseHandler(
             req,
             res,

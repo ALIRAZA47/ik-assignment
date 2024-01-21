@@ -1,9 +1,35 @@
+import axios, { AxiosInstance } from 'axios'
+import HttpException from '../../utils/global/httpException'
+import { HttpStatusCode } from 'axios'
+import { string } from 'joi'
+
 export class Problem2Service {
+    private reqInstance: AxiosInstance
+
     constructor() {
-    // do nothing
+        this.reqInstance = axios.create({
+            timeout: 1000 * 30,
+        })
     }
 
     async callApiHandleExceptionsAndReturnResponse() {
-        return 'Hello'
+        const url: string = 'https://jsonplaceholder.typicode.com/todos/1'
+        try {
+            const response = await this.reqInstance.get(url)
+            return response.data
+        } catch (e) {
+            // if API call failed to connect to the API, throw an error with the status code and the error message
+            if (e?.code === 'ECONNREFUSED' || e?.code === 'ENOTFOUND') {
+                throw new HttpException(
+                    HttpStatusCode.BadGateway,
+                    'Error while connecting to the API',
+                )
+            }
+            // if the API call fails, throw an error with the status code and the error message
+            throw new HttpException(
+                e?.response?.status || HttpStatusCode.BadGateway,
+                e?.response?.data?.error?.message || 'Error while logging in user',
+            )
+        }
     }
 }

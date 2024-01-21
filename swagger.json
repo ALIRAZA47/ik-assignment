@@ -137,12 +137,6 @@
           "default": {
             "description": ""
           }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {}
-          }
         }
       }
     }

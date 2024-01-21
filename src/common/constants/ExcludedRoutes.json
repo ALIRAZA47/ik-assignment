@@ -5,7 +5,8 @@
       "/api/mgmt/info",
       "/api/mgmt/metrics",
       "/api/mgmt/health",
-      "/api/mgmt/ready"
+      "/api/mgmt/ready",
+      "/api/problem-2-api/call-api"
     ],
     "POST": [
       "/api/users"
