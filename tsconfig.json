@@ -38,6 +38,7 @@
     "src/**/*",
     "src/swagger.ts",
     "README.md",
-    "package.json"
+    "package.json",
+    "swagger.json"
   ]
 }
