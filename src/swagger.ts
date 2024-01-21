@@ -1,7 +1,8 @@
 import swaggerAutogen from 'swagger-autogen'
 import { config } from 'dotenv'
 import j2s from 'joi-to-swagger'
-import { ScrapUsingUrlsValidator } from './validators/scrap.using.urls.validator'
+import { ScrapUsingUrlsDto } from './dtos/scrap.using.urls.dto'
+import { CreatePostJoiSchema } from './dtos/posts/create.post.dto'
 
 config()
 
@@ -27,7 +28,8 @@ export const swaggerConfigDoc = {
         },
     },
     '@definitions': {
-        URLToContentsModel: SwaggerDefinitionsFromJoi(ScrapUsingUrlsValidator),
+        URLToContentsModel: SwaggerDefinitionsFromJoi(ScrapUsingUrlsDto),
+        CreatePostModel: SwaggerDefinitionsFromJoi(CreatePostJoiSchema),
     },
 }
 

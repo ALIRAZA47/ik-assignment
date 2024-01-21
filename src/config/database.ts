@@ -5,6 +5,7 @@ mongoose.set('toJSON', {
     virtuals: true,
     transform: (doc, converted) => {
         delete converted._id
+        delete converted.__v
     },
 })
 export const connectDB: () => Promise<void> = async () => {

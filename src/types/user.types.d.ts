@@ -1,6 +1,6 @@
 import { BaseSchemaType } from './base.schema.type'
 
-declare namespace User {
+declare namespace Users {
   interface IUser extends BaseSchemaType {
     fuid: string
     name: string

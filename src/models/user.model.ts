@@ -4,11 +4,6 @@ import { UserStatusEnum } from '../common/enums/user/user.status.enum'
 import { Types } from '../types/types'
 
 export const UserSchema = new Schema<Types.User.IUser>({
-    fuid: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     username: {
         type: String,
         required: true,
@@ -24,16 +19,8 @@ export const UserSchema = new Schema<Types.User.IUser>({
     name: {
         type: String,
     },
-    status: {
-        type: String,
-        default: UserStatusEnum.PENDING,
-        enum: [...Object.values(UserStatusEnum)],
-    },
-    verificationCode: {
-        type: String,
-    },
 }).add(BaseSchema)
 
-const UserModel = model('user', UserSchema)
+const UserModel = model('users', UserSchema)
 
 export default UserModel

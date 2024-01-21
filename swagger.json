@@ -26,82 +26,6 @@
         }
       }
     },
-    "/users/": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/is-username-taken": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/logged-in": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/login": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/verify-email": {
-      "patch": {
-        "tags": [
-          "User"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/problem-1-scrapping/scrap": {
       "post": {
         "tags": [
@@ -165,6 +89,120 @@
           }
         }
       }
+    },
+    "/problem-4-posts-crud/": {
+      "get": {
+        "tags": [
+          "Problem 4 (Posts CRUD)"
+        ],
+        "summary": "Read All Posts",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Problem 4 (Posts CRUD)"
+        ],
+        "summary": "Create New Post",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePostModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/problem-4-posts-crud/{post_id}": {
+      "get": {
+        "tags": [
+          "Problem 4 (Posts CRUD)"
+        ],
+        "summary": "Read Posts By ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Problem 4 (Posts CRUD)"
+        ],
+        "summary": "Update Post",
+        "description": "",
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePostModel"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Problem 4 (Posts CRUD)"
+        ],
+        "summary": "Delete Post",
+        "description": "",
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {
@@ -187,6 +225,21 @@
         },
         "required": [
           "urls"
+        ],
+        "additionalProperties": false
+      },
+      "CreatePostModel": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
         ],
         "additionalProperties": false
       }

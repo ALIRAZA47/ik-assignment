@@ -3,4 +3,5 @@ export interface BaseSchemaType {
   createdAt?: Date
   updatedAt?: Date
   isDeleted?: boolean
+  deletedAt?: Date
 }

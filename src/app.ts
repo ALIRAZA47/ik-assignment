@@ -6,9 +6,9 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import { connectDB } from './config/database'
+import {connectDB} from './config/database'
 import api from './controllers/index.controller'
-import { errorHandler, notFound } from './middlewares/exception.handler.mw'
+import {errorHandler, notFound} from './middlewares/exception.handler.mw'
 import authenticationMiddleware from './middlewares/authentication.mw'
 import swaggerUI from 'swagger-ui-express'
 
@@ -30,7 +30,7 @@ app.use(
     swaggerUI.serve,
     swaggerUI.setup(require('../swagger.json')),
 )
-app.use('/api/', authenticationMiddleware, api)
+app.use('/api/', api)
 // Middlewares
 app.use(notFound)
 app.use(errorHandler)

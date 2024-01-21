@@ -4,7 +4,7 @@ import globalResponseHandler from '../../utils/global/response.handler'
 import { ScrappingService } from '../../services/scrapping/scrapping.service'
 import { HttpStatusCode } from 'axios'
 import validateRequestBody from '../../middlewares/validate.request.body.mw'
-import { ScrapUsingUrlsValidator } from '../../validators/scrap.using.urls.validator'
+import { ScrapUsingUrlsDto } from '../../dtos/scrap.using.urls.dto'
 import { Problem2Service } from '../../services/problem-2/problem.2.service'
 
 const problem2Api = Router()
@@ -21,7 +21,7 @@ problem2Api.get(
             req,
             res,
             HttpStatusCode.Ok,
-            'App Home',
+            'API Call',
             await problem2Service.callApiHandleExceptionsAndReturnResponse(),
         )
     }),
