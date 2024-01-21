@@ -1,4 +1,3 @@
-import swaggerAutogen from 'swagger-autogen'
 import { config } from 'dotenv'
 import j2s from 'joi-to-swagger'
 import { ScrapUsingUrlsDto } from './dtos/scrap.using.urls.dto'

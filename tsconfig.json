@@ -39,6 +39,7 @@
     "src/swagger.ts",
     "README.md",
     "package.json",
-    "swagger.json"
+    "swagger.json",
+    "files"
   ]
 }
